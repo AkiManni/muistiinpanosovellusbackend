@@ -45,7 +45,7 @@ app.get('/api/notes/:id', (request, response, next) => {
       next(error))
   })
 
-app.post('/api/notes', (request, response) => {
+app.post('/api/notes', (request, response, next) => {
   const body = request.body
 
   const note = new Note({
@@ -57,7 +57,8 @@ app.post('/api/notes', (request, response) => {
   .then(savedNote => {
     response.json(savedNote)
   })
-  .catch(error => next(error))
+  .catch(error => 
+    next(error))
 })
 
 app.delete('/api/notes/:id', (request, response, next) => {
